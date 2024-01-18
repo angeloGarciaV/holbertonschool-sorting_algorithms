@@ -20,13 +20,15 @@ void swap(int *a, int *b)
 */
 void quick_sort(int *array, size_t size)
 {
-	int pivot = array[size - 1];
-	size_t i = 0, j = 0;
-
 	if (size < 2)
+	{
 		return;
+	}
 
-	for (; j < size - 1; j++)
+	size_t i = 0, j;
+	int pivot = array[size - 1];
+
+	for (j = 0; j < size - 1; j++)
 	{
 		if (array[j] < pivot)
 		{
@@ -38,11 +40,13 @@ void quick_sort(int *array, size_t size)
 			i++;
 		}
 	}
+
 	if (i != j)
 	{
 		swap(&array[i], &array[j]);
 		print_array(array, size);
 	}
+
 	quick_sort(array, i);
 	quick_sort(array + i + 1, size - i - 1);
 }
